@@ -1,44 +1,29 @@
-/* global introJs */
-import { DIRECTIVES } from './directives';
-import timer from './timer';
+import introJs from "intro.js";
+import { DIRECTIVES } from "./directives";
 
 const DEFAULT_OPTIONS = {
-    waitTimeout: 400
+  waitTimeout: 400,
 };
 
 const Plugin = {
-    install(Vue, options) {
-        options = Object.assign({}, DEFAULT_OPTIONS, options);
+  install(app, options) {
+    options = Object.assign({}, DEFAULT_OPTIONS, options);
+    app.config.globalProperties.$intro = (...args) => {
+      return introJs(...args);
+    };
 
-        Vue.prototype.$intro = (...args) => {
-            return introJs(...args);
-        };
-
-        const Comp = Vue.extend(timer);
-        window.__introjsDiscovery = new Comp({
-            propsData: options
-        });
-
-        Vue.directive('intro', DIRECTIVES.intro);
-        Vue.directive('intro-step', DIRECTIVES.step);
-        Vue.directive('intro-position', DIRECTIVES.position);
-        Vue.directive('intro-tooltip-class', DIRECTIVES.tooltipClass);
-        Vue.directive('intro-highlight-class', DIRECTIVES.highlightClass);
-        Vue.directive('intro-scroll-to', DIRECTIVES.scrollTo);
-        Vue.directive('intro-disable-interaction', DIRECTIVES.disableInteraction);
-        Vue.directive('intro-hint', DIRECTIVES.hint);
-        Vue.directive('intro-hint-position', DIRECTIVES.hintPosition);
-        Vue.directive('intro-autostart', DIRECTIVES.autostart);
-        Vue.directive('intro-if', DIRECTIVES.conditional);
-    }
+    app.directive("intro", DIRECTIVES.intro);
+    app.directive("intro-step", DIRECTIVES.step);
+    app.directive("intro-position", DIRECTIVES.position);
+    app.directive("intro-tooltip-class", DIRECTIVES.tooltipClass);
+    app.directive("intro-highlight-class", DIRECTIVES.highlightClass);
+    app.directive("intro-scroll-to", DIRECTIVES.scrollTo);
+    app.directive("intro-disable-interaction", DIRECTIVES.disableInteraction);
+    app.directive("intro-hint", DIRECTIVES.hint);
+    app.directive("intro-hint-position", DIRECTIVES.hintPosition);
+    app.directive("intro-autostart", DIRECTIVES.autostart);
+    app.directive("intro-if", DIRECTIVES.conditional);
+  },
 };
 
 export default Plugin;
-
-export function autoregister() {
-    if (window.Vue) {
-        window.Vue.use(Plugin);
-    }
-}
-
-autoregister();
