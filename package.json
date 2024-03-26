@@ -23,7 +23,7 @@
     "lint": "eslint --ext .js src/"
   },
   "dependencies": {
-    "intro.js": "2.7.0"
+    "intro.js": "2.9.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "2.0.1",
