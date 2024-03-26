@@ -1,6 +1,6 @@
 {
   "name": "@eturnity/vue-introjs",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "intro.js bindings for Vue",
   "type": "module",
   "main": "dist/index.cjs",
