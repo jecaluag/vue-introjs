@@ -11,7 +11,7 @@ export default defineConfig({
     lib: {
       entry: "./src/index.js",
       formats: ["es", "cjs"],
-      name: "vue-introjs",
+      name: "@eturnity/vue-introjs",
       fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
     },
     rollupOptions: {
